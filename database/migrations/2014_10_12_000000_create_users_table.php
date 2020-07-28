@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
+    private $table = 'sparrow_users';
     /**
      * Run the migrations.
      *
@@ -13,14 +14,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('phone', 11)->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->enum('sex', ['1', '2']);
+            $table->timestamp('birth')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('introduction')->nullable();
+            $table->string('email')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
+            $table->string('status', 1)->default(0);
         });
     }
 
@@ -31,6 +37,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists($this->table);
     }
 }

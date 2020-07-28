@@ -10,13 +10,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'sparrow_users';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'phone', 'name', 'password', 'sex', 'email', 'birth',
+        'avatar', 'introduction', 'status'
     ];
 
     /**
@@ -25,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password'
     ];
 
     /**
@@ -34,6 +36,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime'
     ];
+
+    const UNREVIEWED = 0;
+    const VALID = 1;
+    const SUSPICIOUS = 2;
+    const FREEZE = 8;
+    const DESTROY = 9;
 }
