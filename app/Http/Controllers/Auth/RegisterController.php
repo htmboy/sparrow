@@ -52,6 +52,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'phone' => ['required', 'string', 'size:11', 'unique:sparrow_users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'captcha' => ['required', 'captcha'],
+        ], [
+            'captcha.required' => '验证码不能为空',
+            'captcha.captcha' => '请输入正确的验证码',
         ]);
     }
 

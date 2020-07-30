@@ -156,7 +156,7 @@ return [
         'city'                  => '城市',
         'country'               => '国家',
         'address'               => '地址',
-        'phone'                 => '电话',
+        'phone'                 => '手机号码',
         'mobile'                => '手机',
         'age'                   => '年龄',
         'sex'                   => '性别',
@@ -175,5 +175,6 @@ return [
         'time'                  => '时间',
         'available'             => '可用的',
         'size'                  => '大小',
+        'captcha'               => '验证码'
     ],
 ];
