@@ -11,7 +11,7 @@ return [
 
         // 默认可用的发送网关
         'gateways' => [
-            'aliyun',
+            'yunpian',
         ],
     ],
     // 可用的网关配置
@@ -19,10 +19,9 @@ return [
         'errorlog' => [
             'file' => '/tmp/easy-sms.log',
         ],
-        'aliyun' => [
-            'access_key_id' => env('SMS_ALIYUN_ACCESS_KEY_ID'),
-            'access_key_secret' => env('SMS_ALIYUN_ACCESS_KEY_SECRET'),
-            'sign_name' => 'Larabbs',
+        'yunpian' => [
+            'api_key' => env('SMS_YUNPIAN_API_KEY'),
+            'signature' => '【默认签名】'
         ],
     ],
 ];
