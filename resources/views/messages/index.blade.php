@@ -1,61 +1,34 @@
 @extends('layouts.app')
 
+@section('title', '话题列表')
+
 @section('content')
-<div class="container">
-  <div class="col-md-10 offset-md-1">
-    <div class="card ">
-      <div class="card-header">
-        <h1>
-          Message
-          <a class="btn btn-success float-xs-right" href="{{ route('messages.create') }}">Create</a>
-        </h1>
-      </div>
 
-      <div class="card-body">
-        @if($messages->count())
-          <table class="table table-sm table-striped">
-            <thead>
-              <tr>
-                <th class="text-xs-center">#</th>
-                <th>Position_id</th> <th>User_id</th> <th>Title</th> <th>Content</th> <th>Sort</th> <th>Seo_title</th> <th>Seo_keywords</th> <th>Seo_description</th> <th>Status</th>
-                <th class="text-xs-right">OPTIONS</th>
-              </tr>
-            </thead>
+  <div class="row mb-5">
+    <div class="col-lg-9 col-md-9 topic-list">
+      <div class="card ">
 
-            <tbody>
-              @foreach($messages as $message)
-              <tr>
-                <td class="text-xs-center"><strong>{{$message->id}}</strong></td>
+        <div class="card-header bg-transparent">
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link active" href="#">最后回复</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">最新发布</a></li>
+          </ul>
+        </div>
 
-                <td>{{$message->position_id}}</td> <td>{{$message->user_id}}</td> <td>{{$message->title}}</td> <td>{{$message->content}}</td> <td>{{$message->sort}}</td> <td>{{$message->seo_title}}</td> <td>{{$message->seo_keywords}}</td> <td>{{$message->seo_description}}</td> <td>{{$message->status}}</td>
-
-                <td class="text-xs-right">
-                  <a class="btn btn-sm btn-primary" href="{{ route('messages.show', $message->id) }}">
-                    V
-                  </a>
-
-                  <a class="btn btn-sm btn-warning" href="{{ route('messages.edit', $message->id) }}">
-                    E
-                  </a>
-
-                  <form action="{{ route('messages.destroy', $message->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
-                    {{csrf_field()}}
-                    <input type="hidden" name="_method" value="DELETE">
-
-                    <button type="submit" class="btn btn-sm btn-danger">D </button>
-                  </form>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-          {!! $messages->render() !!}
-        @else
-          <h3 class="text-xs-center alert alert-info">Empty!</h3>
-        @endif
+        <div class="card-body">
+          {{-- 话题列表 --}}
+          @include('messages._message_list', ['messages' => $messages])
+          {{-- 分页 --}}
+          <div class="mt-5">
+            {!! $messages->appends(Request::except('page'))->render() !!}
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="col-lg-3 col-md-3 sidebar">
+      @include('messages._sidebar')
+    </div>
   </div>
-</div>
 
 @endsection

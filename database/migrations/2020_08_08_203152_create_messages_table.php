@@ -7,16 +7,16 @@ class CreateMessagesTable extends Migration
 {
 	public function up()
 	{
-		Schema::create('messages', function(Blueprint $table) {
+		Schema::create('sparrow_messages', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('position_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->longtext('content');
             $table->integer('sort')->unsigned();
-            $table->string('seo_title');
-            $table->string('seo_keywords');
-            $table->text('seo_description');
+            $table->string('seo_title')->nullable();
+            $table->string('seo_keywords')->nullable();
+            $table->text('seo_description')->nullable();
             $table->tinyinteger('status')->default(1);
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ class CreateMessagesTable extends Migration
 
 	public function down()
 	{
-		Schema::drop('messages');
+		Schema::drop('sparrow_messages');
 	}
 }

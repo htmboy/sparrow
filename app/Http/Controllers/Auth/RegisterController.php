@@ -51,8 +51,8 @@ class RegisterController extends Controller
     {
 
         return Validator::make($data, [
-            'phone' => ['required', 'string', 'size:11', 'unique:sparrow_users'],
-//            'email' => ['required', 'string', 'email', 'max:255', 'unique:sparrow_users'],
+            'username' => ['required', 'string', 'between:6,16', 'unique:sparrow_users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:sparrow_users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'captcha' => ['required', 'captcha'],
         ], [
@@ -70,8 +70,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'phone' => $data['phone'],
-//            'email' => $data['email'],
+            'username' => $data['username'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }

@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use Notifiable;
+    use Notifiable, MustVerifyEmailTrait;
 
     protected $table = 'sparrow_users';
     /**
@@ -17,8 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'phone', 'name', 'password', 'sex', 'email', 'birth',
-        'avatar', 'introduction', 'status'
+        'name', 'sex', 'birth', 'avatar', 'introduction', 'username', 'email', 'password',
+        'status'
     ];
 
     /**
@@ -27,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password'
+        'password', 'remember_token',
     ];
 
     /**
@@ -40,8 +42,18 @@ class User extends Authenticatable
     ];
 
     const UNREVIEWED = 0;
-    const VALID = 1;
-    const SUSPICIOUS = 2;
+    const NORMAL = 1;
+    const VIOLATION = 2;
+    const SUSPICIOUS = 7;
     const FREEZE = 8;
     const DESTROY = 9;
+
+    public static $statusMap = [
+        self::UNREVIEWED => '未审核',
+        self::NORMAL => '正常',
+        self::VIOLATION => '违规',
+        self::SUSPICIOUS => '异常',
+        self::FREEZE => '冻结',
+        self::DESTROY => '销户'
+    ];
 }
