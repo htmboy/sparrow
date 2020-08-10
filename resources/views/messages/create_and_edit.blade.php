@@ -49,19 +49,7 @@
                 <div class="form-group">
                     <label for="sort-field">Sort</label>
                     <input class="form-control" type="text" name="sort" id="sort-field" value="{{ old('sort', $message->sort ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="seo_title-field">Seo_title</label>
-                	<input class="form-control" type="text" name="seo_title" id="seo_title-field" value="{{ old('seo_title', $message->seo_title ) }}" />
-                </div> 
-                <div class="form-group">
-                	<label for="seo_keywords-field">Seo_keywords</label>
-                	<input class="form-control" type="text" name="seo_keywords" id="seo_keywords-field" value="{{ old('seo_keywords', $message->seo_keywords ) }}" />
-                </div> 
-                <div class="form-group">
-                    <label for="seo_description-field">Seo_description</label>
-                    <input class="form-control" type="text" name="seo_description" id="seo_description-field" value="{{ old('seo_description', $message->seo_description ) }}" />
-                </div> 
+                </div>
                 <div class="form-group">
                     <label for="status-field">Status</label>
                     <input class="form-control" type="text" name="status" id="status-field" value="{{ old('status', $message->status ) }}" />

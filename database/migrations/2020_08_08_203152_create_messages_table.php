@@ -10,6 +10,7 @@ class CreateMessagesTable extends Migration
 		Schema::create('sparrow_messages', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('position_id')->unsigned();
+            $table->integer('theme_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->longtext('content');

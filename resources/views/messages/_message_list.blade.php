@@ -1,6 +1,8 @@
 @if (count($messages))
+
     <ul class="list-unstyled">
         @foreach ($messages as $message)
+
             <li class="media">
                 <div class="media-left">
                     <a href="{{ route('users.show', [$message->user_id]) }}">
@@ -11,19 +13,19 @@
                 <div class="media-body">
 
                     <div class="media-heading mt-0 mb-1">
-                        <a href="{{ route('topics.show', [$message->id]) }}" title="{{ $message->title }}">
+                        <a href="{{ route('messages.show', [$message->id]) }}" title="{{ $message->title }}">
                             {{ $message->title }}
                         </a>
-                        <a class="float-right" href="{{ route('topics.show', [$message->id]) }}">
+                        <a class="float-right" href="{{ route('messages.show', [$message->id]) }}">
                             <span class="badge badge-secondary badge-pill"> {{ $message->reply_count }} </span>
                         </a>
                     </div>
 
                     <small class="media-body meta text-secondary">
 
-                        <a class="text-secondary" href="#" title="{{ $message->category->name }}">
+                        <a class="text-secondary" href="{{ route('themes.show', $message->themes_id) }}" title="{{ $message->theme->title }}">
                             <i class="far fa-folder"></i>
-                            {{ $message->category->name }}
+                            {{ $message->theme->title }}
                         </a>
 
                         <span> • </span>

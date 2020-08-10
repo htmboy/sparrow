@@ -41,13 +41,13 @@
 	{{ $message->sort }}
 </p> <label>Seo_title</label>
 <p>
-	{{ $message->seo_title }}
+	{{ $message->seo_title?:'' }}
 </p> <label>Seo_keywords</label>
 <p>
-	{{ $message->seo_keywords }}
+	{{ $message->seo_keywords?:'' }}
 </p> <label>Seo_description</label>
 <p>
-	{{ $message->seo_description }}
+	{{ $message->seo_description?:'' }}
 </p> <label>Status</label>
 <p>
 	{{ $message->status }}
