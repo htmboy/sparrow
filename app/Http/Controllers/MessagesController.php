@@ -26,6 +26,10 @@ class MessagesController extends Controller
 
     public function show(Message $message)
     {
+        // URL 矫正
+        if ( ! empty($message->slug) && $message->slug != $message->slug) {
+            return redirect($message->link(), 301);
+        }
         return view('messages.show', compact('message'));
     }
 
@@ -40,13 +44,14 @@ class MessagesController extends Controller
 		$message->fill($request->all());
 		$message->user_id = Auth::id();
 		$message->save();
-		return redirect()->route('messages.show', $message->id)->with('success', '帖子创建成功！');
+		return redirect()->to($message->link(), $message->id)->with('success', '帖子创建成功！');
 	}
 
 	public function edit(Message $message)
 	{
         $this->authorize('update', $message);
-		return view('messages.create_and_edit', compact('message'));
+        $theme = Theme::all();
+		return view('messages.create_and_edit', compact('message', 'theme'));
 	}
 
 	public function update(MessageRequest $request, Message $message)
@@ -54,7 +59,7 @@ class MessagesController extends Controller
 		$this->authorize('update', $message);
 		$message->update($request->all());
 
-		return redirect()->route('messages.show', $message->id)->with('message', 'Updated successfully.');
+		return redirect()->to($message->link(), $message->id)->with('success', '更新成功！');
 	}
 
 	public function destroy(Message $message)
@@ -62,6 +67,6 @@ class MessagesController extends Controller
 		$this->authorize('destroy', $message);
 		$message->delete();
 
-		return redirect()->route('messages.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('messages.index')->with('success', '成功删除！');
 	}
 }

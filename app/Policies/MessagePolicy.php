@@ -9,12 +9,11 @@ class MessagePolicy extends Policy
 {
     public function update(User $user, Message $message)
     {
-        // return $message->user_id == $user->id;
-        return true;
+        return $user->isAuthorOf($message);
     }
 
     public function destroy(User $user, Message $message)
     {
-        return true;
+        return $user->isAuthorOf($message);
     }
 }

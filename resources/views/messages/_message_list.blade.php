@@ -13,10 +13,10 @@
                 <div class="media-body">
 
                     <div class="media-heading mt-0 mb-1">
-                        <a href="{{ route('messages.show', [$message->id]) }}" title="{{ $message->title }}">
+                        <a href="{{ $message->link() }}" title="{{ $message->title }}">
                             {{ $message->title }}
                         </a>
-                        <a class="float-right" href="{{ route('messages.show', [$message->id]) }}">
+                        <a class="float-right" href="{{ $message->link() }}">
                             <span class="badge badge-secondary badge-pill"> {{ $message->reply_count }} </span>
                         </a>
                     </div>

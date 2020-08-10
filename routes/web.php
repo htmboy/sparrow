@@ -34,8 +34,9 @@ Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->na
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
-Route::resource('messages', 'MessagesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('messages', 'MessagesController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('themes', 'ThemesController', ['only' => ['show']]);
 
 Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
+Route::get('messages/{message}/{slug?}', 'MessagesController@show')->name('messages.show');

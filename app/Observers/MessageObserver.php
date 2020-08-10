@@ -23,6 +23,6 @@ class MessageObserver
     {
         $message->content = clean($message->content, 'user_message_body');
 
-        $topic->excerpt = make_excerpt($topic->body);
+        $message->excerpt = make_excerpt($message->body);
     }
 }
