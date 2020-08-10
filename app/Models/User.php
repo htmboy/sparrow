@@ -56,4 +56,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
         self::FREEZE => '冻结',
         self::DESTROY => '销户'
     ];
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
