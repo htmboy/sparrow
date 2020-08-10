@@ -18,4 +18,11 @@ class MessageObserver
     {
         //
     }
+
+    public function saving(Message $message)
+    {
+        $message->content = clean($message->content, 'user_message_body');
+
+        $topic->excerpt = make_excerpt($topic->body);
+    }
 }
