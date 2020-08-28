@@ -21,37 +21,47 @@
                     @if($message->id)
                         <form action="{{ route('messages.update', $message->id) }}" method="POST" accept-charset="UTF-8">
                             <input type="hidden" name="_method" value="PUT">
-                            @else
-                                <form action="{{ route('messages.store') }}" method="POST" accept-charset="UTF-8">
-                                    @endif
+                    @else
+                        <form action="{{ route('messages.store') }}" method="POST" accept-charset="UTF-8">
+                    @endif
 
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                    @include('shared._error')
+                            @include('shared._error')
 
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" name="title" value="{{ old('title', $message->title ) }}" placeholder="请填写标题" required />
-                                    </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="title" value="{{ old('title', $message->title ) }}" placeholder="请填写标题" required />
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="position_id" required>
+                                    <option value="" hidden disabled {{ session('place_id') ? '' : 'selected' }}>请选择区域</option>
+                                    @foreach ($positions as $position)
+                                        <option value="{{ $position->id }}" {{ session('place_id') == $position->id ? 'selected' : '' }}>
+                                            {{ idToProvinceSlugs($position->id, false) }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                    <div class="form-group">
-                                        <select class="form-control" name="category_id" required>
-                                            <option value="" hidden disabled {{ $topic->id ? '' : 'selected' }}>请选择分类</option>
-                                            @foreach ($categories as $value)
-                                                <option value="{{ $value->id }}" {{ $topic->category_id == $value->id ? 'selected' : '' }}>
-                                                    {{ $value->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <div class="form-group">
+                                <select class="form-control" name="theme_id" required>
+                                    <option value="" hidden disabled {{ $message->id ? '' : 'selected' }}>请选择分类</option>
+                                    @foreach ($themes as $value)
+                                        <option value="{{ $value->id }}" {{ $message->theme_id == $value->id ? 'selected' : '' }}>
+                                            {{ $value->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                    <div class="form-group">
-                                        <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。" required>{{ old('body', $message->body ) }}</textarea>
-                                    </div>
+                            <div class="form-group">
+                                <textarea name="content" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。" required>{{ old('content', $message->content ) }}</textarea>
+                            </div>
 
-                                    <div class="well well-sm">
-                                        <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 保存</button>
-                                    </div>
-                                </form>
+                            <div class="well well-sm">
+                                <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 保存</button>
+                            </div>
+                        </form>
                 </div>
             </div>
         </div>
@@ -73,7 +83,7 @@
             var editor = new Simditor({
                 textarea: $('#editor'),
                 upload: {
-                    url: '{{ route('topics.upload_image') }}',
+                    url: '{{ route('messages.upload_image') }}',
                     params: {
                         _token: '{{ csrf_token() }}'
                     },

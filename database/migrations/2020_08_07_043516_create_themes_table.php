@@ -20,7 +20,7 @@ class CreateThemesTable extends Migration
             $table->string('name');
             $table->tinyInteger('level');
             $table->string('path');
-            $table->enum('is_show', ['0', '1'])->default('1');
+            $table->tinyInteger('is_show')->unsigned();
             $table->tinyInteger('sort');
         });
     }

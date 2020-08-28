@@ -17092,39 +17092,39 @@ body {
   padding: 3px;
 }
 
-/* Topic Index Page */
+/* message Index Page */
 
-.topics-index-page .topic-list .nav > li > a,
-.categories-show-page .topic-list .nav > li > a {
+.messages-index-page .message-list .nav > li > a,
+.categories-show-page .message-list .nav > li > a {
   position: relative;
   display: block;
   padding: 5px 14px;
   font-size: 0.9em;
 }
 
-.topics-index-page .topic-list a,
-.categories-show-page .topic-list a {
+.messages-index-page .message-list a,
+.categories-show-page .message-list a {
   color: #444444;
 }
 
-.topics-index-page .topic-list .meta,
-.categories-show-page .topic-list .meta {
+.messages-index-page .message-list .meta,
+.categories-show-page .message-list .meta {
   font-size: 0.9em;
   color: #b3b3b3;
 }
 
-.topics-index-page .topic-list .meta a,
-.categories-show-page .topic-list .meta a {
+.messages-index-page .message-list .meta a,
+.categories-show-page .message-list .meta a {
   color: #b3b3b3;
 }
 
-.topics-index-page .topic-list .badge,
-.categories-show-page .topic-list .badge {
+.messages-index-page .message-list .badge,
+.categories-show-page .message-list .badge {
   background-color: #d8d8d8;
 }
 
-.topics-index-page .topic-list hr,
-.categories-show-page .topic-list hr {
+.messages-index-page .message-list hr,
+.categories-show-page .message-list hr {
   margin-top: 12px;
   margin-bottom: 12px;
   border: 0;
@@ -17141,10 +17141,10 @@ body {
   max-width: 100%;
 }
 
-/* Topic Show Page */
+/* message Show Page */
 
 .simditor-body,
-.topic-body {
+.message-body {
   font-size: 15px;
   line-height: 1.3;
   overflow: hidden;
@@ -17153,83 +17153,83 @@ body {
 }
 
 .simditor-body a,
-.topic-body a {
+.message-body a {
   background: transparent;
 }
 
 .simditor-body a:active,
 .simditor-body a:hover,
-.topic-body a:active,
-.topic-body a:hover {
+.message-body a:active,
+.message-body a:hover {
   outline: 0;
 }
 
 .simditor-body ol li,
-.topic-body ol li {
+.message-body ol li {
   margin: 8px 0;
 }
 
 .simditor-body pre[class*=language-],
-.topic-body pre[class*=language-] {
+.message-body pre[class*=language-] {
   margin: 1.2em 0 !important;
 }
 
 .simditor-body strong,
-.topic-body strong {
+.message-body strong {
   font-weight: bold;
 }
 
 .simditor-body h1,
-.topic-body h1 {
+.message-body h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
 .simditor-body img,
-.topic-body img {
+.message-body img {
   border: 0;
 }
 
 .simditor-body hr,
-.topic-body hr {
+.message-body hr {
   box-sizing: content-box;
   height: 0;
 }
 
 .simditor-body table,
-.topic-body table {
+.message-body table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 .simditor-body td,
 .simditor-body th,
-.topic-body td,
-.topic-body th {
+.message-body td,
+.message-body th {
   padding: 0;
 }
 
 .simditor-body *,
-.topic-body * {
+.message-body * {
   box-sizing: border-box;
 }
 
 .simditor-body a,
-.topic-body a {
+.message-body a {
   text-decoration: none;
 }
 
 .simditor-body a:hover,
 .simditor-body a:focus,
 .simditor-body a:active,
-.topic-body a:hover,
-.topic-body a:focus,
-.topic-body a:active {
+.message-body a:hover,
+.message-body a:focus,
+.message-body a:active {
   text-decoration: none;
 }
 
 .simditor-body hr,
-.topic-body hr {
+.message-body hr {
   height: 0;
   margin: 15px 0;
   overflow: hidden;
@@ -17240,68 +17240,68 @@ body {
 
 .simditor-body hr:before,
 .simditor-body hr:after,
-.topic-body hr:before,
-.topic-body hr:after {
+.message-body hr:before,
+.message-body hr:after {
   display: table;
   content: " ";
 }
 
 .simditor-body hr:after,
-.topic-body hr:after {
+.message-body hr:after {
   clear: both;
 }
 
 .simditor-body blockquote,
-.topic-body blockquote {
+.message-body blockquote {
   margin: 0;
 }
 
 .simditor-body ul,
 .simditor-body ol,
-.topic-body ul,
-.topic-body ol {
+.message-body ul,
+.message-body ol {
   padding: 0;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .simditor-body ol ol,
-.topic-body ol ol {
+.message-body ol ol {
   list-style-type: lower-roman;
 }
 
 .simditor-body dd,
-.topic-body dd {
+.message-body dd {
   margin-left: 0;
 }
 
 .simditor-body code,
 .simditor-body pre,
-.topic-body code,
-.topic-body pre {
+.message-body code,
+.message-body pre {
   font-family: monaco, Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 1em;
 }
 
 .simditor-body pre,
-.topic-body pre {
+.message-body pre {
   margin-top: 0;
   margin-bottom: 0;
   overflow: auto;
 }
 
-.simditor-body .topic-body > *:first-child,
-.topic-body .topic-body > *:first-child {
+.simditor-body .message-body > *:first-child,
+.message-body .message-body > *:first-child {
   margin-top: 0 !important;
 }
 
-.simditor-body .topic-body > *:last-child,
-.topic-body .topic-body > *:last-child {
+.simditor-body .message-body > *:last-child,
+.message-body .message-body > *:last-child {
   margin-bottom: 0 !important;
 }
 
 .simditor-body .anchor,
-.topic-body .anchor {
+.message-body .anchor {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -17313,7 +17313,7 @@ body {
 }
 
 .simditor-body .anchor:focus,
-.topic-body .anchor:focus {
+.message-body .anchor:focus {
   outline: none;
 }
 
@@ -17323,12 +17323,12 @@ body {
 .simditor-body h4,
 .simditor-body h5,
 .simditor-body h6,
-.topic-body h1,
-.topic-body h2,
-.topic-body h3,
-.topic-body h4,
-.topic-body h5,
-.topic-body h6 {
+.message-body h1,
+.message-body h2,
+.message-body h3,
+.message-body h4,
+.message-body h5,
+.message-body h6 {
   position: relative;
   margin-top: 1em;
   margin-bottom: 16px;
@@ -17336,7 +17336,7 @@ body {
 }
 
 .simditor-body h1,
-.topic-body h1 {
+.message-body h1 {
   padding-bottom: 0.3em;
   font-size: 2.25em;
   line-height: 1.2;
@@ -17344,7 +17344,7 @@ body {
 }
 
 .simditor-body h2,
-.topic-body h2 {
+.message-body h2 {
   padding-bottom: 0.3em;
   font-size: 1.3em;
   line-height: 1.225;
@@ -17352,23 +17352,23 @@ body {
 }
 
 .simditor-body h3,
-.topic-body h3 {
+.message-body h3 {
   font-size: 1.2em;
   line-height: 1.43;
 }
 
 .simditor-body h4,
-.topic-body h4 {
+.message-body h4 {
   font-size: 1.1em;
 }
 
 .simditor-body h5,
-.topic-body h5 {
+.message-body h5 {
   font-size: 1em;
 }
 
 .simditor-body h6,
-.topic-body h6 {
+.message-body h6 {
   font-size: 0.9em;
   color: #777;
 }
@@ -17380,20 +17380,20 @@ body {
 .simditor-body dl,
 .simditor-body table,
 .simditor-body pre,
-.topic-body p,
-.topic-body blockquote,
-.topic-body ul,
-.topic-body ol,
-.topic-body dl,
-.topic-body table,
-.topic-body pre {
+.message-body p,
+.message-body blockquote,
+.message-body ul,
+.message-body ol,
+.message-body dl,
+.message-body table,
+.message-body pre {
   margin-top: 0;
   margin-bottom: 0px;
   line-height: 30px;
 }
 
 .simditor-body hr,
-.topic-body hr {
+.message-body hr {
   border: 2px dashed #F0F4F6;
   border-bottom: 0px;
   margin: 18px auto;
@@ -17402,8 +17402,8 @@ body {
 
 .simditor-body ul,
 .simditor-body ol,
-.topic-body ul,
-.topic-body ol {
+.message-body ul,
+.message-body ol {
   padding-left: 2em;
   padding: 10px 20px 10px 30px;
   color: #7d8688;
@@ -17411,24 +17411,24 @@ body {
 
 .simditor-body ol ol,
 .simditor-body ol ul,
-.topic-body ol ol,
-.topic-body ol ul {
+.message-body ol ol,
+.message-body ol ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .simditor-body li > p,
-.topic-body li > p {
+.message-body li > p {
   margin-top: 6px;
 }
 
 .simditor-body dl,
-.topic-body dl {
+.message-body dl {
   padding: 0;
 }
 
 .simditor-body dl dt,
-.topic-body dl dt {
+.message-body dl dt {
   padding: 0;
   margin-top: 6px;
   font-size: 1em;
@@ -17437,13 +17437,13 @@ body {
 }
 
 .simditor-body dl dd,
-.topic-body dl dd {
+.message-body dl dd {
   padding: 0 16px;
   margin-bottom: 16px;
 }
 
 .simditor-body blockquote,
-.topic-body blockquote {
+.message-body blockquote {
   font-size: inherit;
   padding: 0 15px;
   color: #777;
@@ -17451,17 +17451,17 @@ body {
 }
 
 .simditor-body blockquote > :first-child,
-.topic-body blockquote > :first-child {
+.message-body blockquote > :first-child {
   margin-top: 20px;
 }
 
 .simditor-body blockquote > :last-child,
-.topic-body blockquote > :last-child {
+.message-body blockquote > :last-child {
   margin-bottom: 20px;
 }
 
 .simditor-body blockquote,
-.topic-body blockquote {
+.message-body blockquote {
   margin: 20px 0 !important;
   background-color: #f5f8fc;
   padding: 1rem;
@@ -17470,7 +17470,7 @@ body {
 }
 
 .simditor-body table,
-.topic-body table {
+.message-body table {
   display: block;
   width: 100%;
   overflow: auto;
@@ -17478,37 +17478,37 @@ body {
 }
 
 .simditor-body table th,
-.topic-body table th {
+.message-body table th {
   font-weight: bold;
 }
 
 .simditor-body table th,
 .simditor-body table td,
-.topic-body table th,
-.topic-body table td {
+.message-body table th,
+.message-body table td {
   padding: 6px 13px;
   border: 1px solid #ddd;
 }
 
 .simditor-body table tr,
-.topic-body table tr {
+.message-body table tr {
   background-color: #fff;
   border-top: 1px solid #ccc;
 }
 
 .simditor-body table tr:nth-child(2n),
-.topic-body table tr:nth-child(2n) {
+.message-body table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
 
 .simditor-body img,
-.topic-body img {
+.message-body img {
   max-width: 100%;
   box-sizing: border-box;
 }
 
 .simditor-body img,
-.topic-body img {
+.message-body img {
   border: 1px solid #ddd;
   box-shadow: 0 0 30px #ccc;
   -moz-box-shadow: 0 0 30px #ccc;
@@ -17518,7 +17518,7 @@ body {
 }
 
 .simditor-body code,
-.topic-body code {
+.message-body code {
   background: rgba(90, 87, 87, 0);
   margin: 5px;
   color: #858080;
@@ -17533,14 +17533,14 @@ body {
 
 .simditor-body code:before,
 .simditor-body code:after,
-.topic-body code:before,
-.topic-body code:after {
+.message-body code:before,
+.message-body code:after {
   letter-spacing: -0.2em;
   content: "\A0";
 }
 
 .simditor-body pre > code,
-.topic-body pre > code {
+.message-body pre > code {
   padding: 0;
   margin: 0;
   font-size: 100%;
@@ -17550,14 +17550,14 @@ body {
 }
 
 .simditor-body .highlight,
-.topic-body .highlight {
+.message-body .highlight {
   margin-bottom: 16px;
 }
 
 .simditor-body .highlight pre,
 .simditor-body pre,
-.topic-body .highlight pre,
-.topic-body pre {
+.message-body .highlight pre,
+.message-body pre {
   padding: 14px;
   overflow: auto;
   line-height: 1.45;
@@ -17567,17 +17567,17 @@ body {
 }
 
 .simditor-body .highlight pre,
-.topic-body .highlight pre {
+.message-body .highlight pre {
   margin-bottom: 0;
 }
 
 .simditor-body pre,
-.topic-body pre {
+.message-body pre {
   word-wrap: normal;
 }
 
 .simditor-body pre code,
-.topic-body pre code {
+.message-body pre code {
   display: block;
   padding: 0;
   margin: 0;
@@ -17590,18 +17590,44 @@ body {
 
 .simditor-body pre code:before,
 .simditor-body pre code:after,
-.topic-body pre code:before,
-.topic-body pre code:after {
+.message-body pre code:before,
+.message-body pre code:after {
   content: normal;
 }
 
-.topics-show-page .card {
+.messages-show-page .card {
   padding: 15px;
 }
 
-.topics-show-page .card h1 {
+.messages-show-page .card h1 {
   margin: 0.4em auto 0.6em;
   font-size: 28px;
   line-height: 38px;
+}
+
+/* 回复列表 */
+
+.message-reply a {
+  color: inherit;
+}
+
+.message-reply .meta {
+  font-size: 0.9em;
+  color: #b3b3b3;
+}
+
+/* 消息通知 */
+
+.notification-badge .badge {
+  font-size: 12px;
+  margin-top: 14px;
+}
+
+.notification-badge .badge-secondary {
+  background-color: #EBE8E8;
+}
+
+.notification-badge .badge-hint {
+  background-color: #d15b47 !important;
 }
 

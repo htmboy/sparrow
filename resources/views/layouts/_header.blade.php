@@ -2,7 +2,7 @@
     <div class="container">
         <!-- Branding Image -->
         <a class="navbar-brand " href="{{ url('/') }}">
-            LaraBBS
+            {{getAppName()}} ~ 永
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,24 +10,33 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
+
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {{ active_class(if_route('messages.index')) }}"><a class="nav-link" href="{{ route('messages.index') }}">话题</a></li>
-                <li class="nav-item {{ theme_nav_active(1) }}"><a class="nav-link" href="{{ route('themes.show', 1) }}">分享</a></li>
-                <li class="nav-item {{ theme_nav_active(2) }}"><a class="nav-link" href="{{ route('themes.show', 2) }}">教程</a></li>
-                <li class="nav-item {{ theme_nav_active(3) }}"><a class="nav-link" href="{{ route('themes.show', 3) }}">问答</a></li>
-                <li class="nav-item {{ theme_nav_active(4) }}"><a class="nav-link" href="{{ route('themes.show', 4) }}">公告</a></li>
+                @if(session('place'))
+                @foreach($themes as $key => $theme)
+                    <li class="nav-item {{ theme_nav_active($theme->id) }}"><a class="nav-link" href="{{ route('themes.show', ['position' => session('place'), 'theme' => $theme->id])  }}">{{$theme->name}}</a></li>
+                @endforeach
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav navbar-right">
                 <!-- Authentication Links -->
+                @if(session('place_id'))
+                <li class="nav-item"><a class="nav-link" href="{{route('root')}}">{{idToProvinceSlugs(session('place_id'), false)}}</a></li>
+                @endif
                 @guest
                     <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link mt-1 mr-3 font-weight-bold" href="{{ route('messages.create') }}">
+                        <a class="nav-link mt-1 mr-3 font-weight-bold" href="{{ route('messages.create', session('place')) }}">
                             <i class="fa fa-plus"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item notification-badge">
+                        <a class="nav-link mr-3 badge badge-pill badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'secondary' }} text-white" href="{{ route('notifications.index') }}">
+                            {{ Auth::user()->notification_count }}
                         </a>
                     </li>
                     <li class="nav-item dropdown">

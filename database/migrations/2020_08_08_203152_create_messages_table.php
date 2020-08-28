@@ -14,11 +14,12 @@ class CreateMessagesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->longtext('content');
+            $table->tinyInteger('reply_count')->unsigned()->nullable();
             $table->integer('sort')->unsigned();
             $table->string('seo_title')->nullable();
             $table->string('seo_keywords')->nullable();
             $table->text('seo_description')->nullable();
-            $table->tinyinteger('status')->default(1);
+            $table->tinyinteger('status')->default(0);
             $table->timestamps();
         });
 	}

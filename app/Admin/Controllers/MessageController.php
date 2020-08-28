@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Models\Message;
 use App\Models\Position;
+use App\Services\PositionService;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -26,13 +27,22 @@ class MessageController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Message());
+        $grid = $grid->disableFilter();
+        $grid = $grid->disableExport();
+        $grid = $grid->disableCreateButton();
+        $grid->model()->orderByDesc('created_at');
+        $grid->column('position_id', '地区')->display(function ($position){
+            return idToProvinceSlugs($position, false);
+        })->filter((new PositionService)->getProvinceMap()->toArray());
 
-        $grid->column('position_id', __('Position id'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('title', __('Title'));
-        $grid->column('status', __('Status'));
+        $grid->column('user', __('User id'))->username('用户');
+        $grid->column('title', __('Title'))->link(function ($message){
+            return route('admin.messages.show', [$message->id]);
+        });
+        $statusMap = Message::$statusMap;
+        $grid->column('status', '状态')->editable('select', $statusMap)->filter($statusMap);
         $grid->column('created_at', __('Created at'));
-        $grid->column('sort', __('Sort'));
+        $grid->column('sort', __('Sort'))->editable();
         return $grid;
     }
 

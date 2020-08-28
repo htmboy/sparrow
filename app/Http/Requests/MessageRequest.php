@@ -25,6 +25,7 @@ class MessageRequest extends Request
                     'title'       => 'required|min:2',
                     'content'        => 'required|min:3',
                     'theme_id' => 'required|numeric',
+                    'position_id' => 'required|numeric',
                 ];
             }
             case 'GET':

@@ -25,11 +25,22 @@ class ReplyController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Reply());
-
-        $grid->column('message_id', __('Message id'));
-        $grid->column('user_id', __('User id'));
+        $grid = $grid->disableFilter();
+        $grid = $grid->disableExport();
+        $grid = $grid->disableCreateButton();
+        $grid->model()->orderByDesc('created_at');
+        $grid->column('message')->title('标题')->link(function ($message){
+//            return $message->message->link();
+            return route('admin.messages.show', [$message->id]);
+        });
+        $grid->column('content', '内容')->display(function ($content){
+            return $content;
+        });
+        $grid->column('user')->username('用户名');
         $grid->column('created_at', __('Created at'));
-        $grid->column('status', __('Status'));
+
+        $statusMap = Reply::$statusMap;
+        $grid->column('status', __('Status'))->editable('select', $statusMap)->filter($statusMap);
 
         return $grid;
     }

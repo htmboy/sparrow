@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Position;
+use App\Services\PositionService;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -45,34 +46,37 @@ class PositionController extends AdminController
     protected function form()
     {
         $form = new Form(new Position);
+        $positionService = new PositionService();
+
+        $position = Position::getNotTowns()->keyBy('id')->map(function ($item) use($positionService){
+            $trim = trim($item->path, '-');
+            if($trim){
+                return $positionService->pathToPlace(explode('-', $trim), false).'-'.$item->place;
+            }
+            return $item->place;
+        })->toArray();
+        $position[0] = 'root';
         $form->select('parent_id', __('parent_id'))->options(
-            array_merge(
-                [0 => 'root'],
-                Position::findByNotTown()->keyBy('id')
-                    ->map(function ($item){return $item->place;})->except([$this->id])
-                    ->toArray())
+            $position
         );
+
         $form->text('place', __('place'))->required();
 
-        $states = [
-            'on'  => ['value' => '1', 'text' => '打开', 'color' => 'success'],
-            'off' => ['value' => '0', 'text' => '关闭', 'color' => 'danger'],
-        ];
-
-        $form->switch('is_town', __('is_town'))->states($states);
-        $form->switch('is_show', __('is_show'))->states($states);
+        $form->switch('is_town', __('is_town'));
+        $form->switch('is_show', __('is_show'));
         $form->hidden('level');
         $form->hidden('path');
+        $form->hidden('slug');
         $form->saving(function (Form $form){
             if($form->parent_id == 0){
                 $form->level = 1;
                 $form->path = '-';
-
             } else {
                 $position = Position::findByParentId($form->parent_id);
                 $form->level = ++$position->level;
-                $form->path = $position->path.$position->parent_id.'-';
+                $form->path = $position->path.$position->id.'-';
             }
+            $form->slug = pinyin($form->place);
         });
         return $form;
     }

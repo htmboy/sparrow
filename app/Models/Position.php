@@ -26,19 +26,19 @@ class Position extends Model
         $this->setTitleColumn('place');
     }
 
-    public static function findByParentId($id)
+    public static function findByParentId($parent_id)
     {
-        return self::find($id);
+        return self::find($parent_id);
     }
 
-    public static function findByNotTown()
+    public static function getNotTowns()
     {
-        return self::where('is_town', '0')->get();
+        return self::where('is_town', '0')->orderByDesc('path')->get();
     }
 
     public static function getTowns()
     {
-        return self::where('is_town', '1')->get();
+        return self::where('is_town', '1')->orderByDesc('path')->get();
     }
 
     public static function getTownsMap()
@@ -46,5 +46,15 @@ class Position extends Model
         return self::getTowns()->keyBy('id')->map(function ($item){
             return $item->place;
         })->toArray();
+    }
+
+    public function getParentPlace()
+    {
+        return $this->findById($this->parent_id)->place;
+    }
+
+    public static function findById($id)
+    {
+        return self::find($id);
     }
 }

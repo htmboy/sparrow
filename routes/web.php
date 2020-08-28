@@ -10,8 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'PagesController@root')->name('root');
+Route::get('/', 'RootController@index')->name('root');
 
 // 用户身份验证相关的路由
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -34,9 +33,15 @@ Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->na
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
-Route::resource('messages', 'MessagesController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
-Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
-Route::resource('themes', 'ThemesController', ['only' => ['show']]);
 
-Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
-Route::get('messages/{message}/{slug?}', 'MessagesController@show')->name('messages.show');
+Route::post('upload_image', 'MessagesController@uploadImage')->name('messages.upload_image');
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+Route::resource('messages', 'MessagesController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+
+Route::prefix('{position}')->group(function (){
+    Route::get('', 'IndexController@index')->name('index');
+    Route::get('messages/{message}', 'MessagesController@show')->name('messages.show');
+
+    Route::resource('themes', 'ThemesController', ['only' => ['show']]);
+});

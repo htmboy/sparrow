@@ -23,13 +23,13 @@
 
                     <small class="media-body meta text-secondary">
 
-                        <a class="text-secondary" href="{{ route('themes.show', $message->themes_id) }}" title="{{ $message->theme->title }}">
+                        <a class="text-secondary" href="{{ route('themes.show', [session('place'), $message->theme_id]) }}" title="{{ $message->theme->title }}">
                             <i class="far fa-folder"></i>
                             {{ $message->theme->title }}
                         </a>
 
                         <span> • </span>
-                        <a class="text-secondary" href="{{ route('users.show', [$message->user_id]) }}" title="{{ $message->user->name }}">
+                        <a class="text-secondary" href="{{ route('users.show', [session('place'), $message->user_id]) }}" title="{{ $message->user->name }}">
                             <i class="far fa-user"></i>
                             {{ $message->user->name }}
                         </a>

@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-class Message extends Information
+use App\Services\PositionService;
+
+class Message extends ContentStatus
 {
     protected $table = 'sparrow_messages';
     protected $fillable = [
-        'position_id', 'user_id', 'title', 'content', 'sort',
-        'seo_title', 'seo_keywords', 'seo_description', 'status'
+        'position_id', 'user_id', 'title', 'content', 'sort', 'theme_id', 'position_id',
+        'seo_title', 'seo_keywords', 'seo_description', 'status', 'reply_count'
     ];
 
     public function theme()
@@ -30,11 +32,11 @@ class Message extends Information
         // 不同的排序，使用不同的数据读取逻辑
         switch ($order) {
             case 'recent':
-                $query->recent();
+                $query->recentReplied();
                 break;
 
             default:
-                $query->recentReplied();
+                $query->recent();
                 break;
         }
     }
@@ -54,6 +56,17 @@ class Message extends Information
 
     public function link($params = [])
     {
-        return route('messages.show', array_merge([$this->id, $this->slug], $params));
+        return route('messages.show', array_merge([(new PositionService)->idToSlugs($this->position_id), $this->id], $params));
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    public function updateReplyCount()
+    {
+        $this->reply_count = $this->replies->count();
+        $this->save();
     }
 }

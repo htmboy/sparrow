@@ -13,7 +13,7 @@ class CreateRepliesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->text('content');
             $table->timestamp('created_at');
-            $table->tinyinteger('status')->unsigned()->default(1);
+            $table->tinyinteger('status')->unsigned()->default(0);
         });
 	}
 

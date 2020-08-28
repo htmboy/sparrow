@@ -18,9 +18,10 @@ class CreatePositionsTable extends Migration
             $table->unsignedInteger('parent_id');
             $table->string('place');
             $table->unsignedInteger('level');
-            $table->enum('is_town', ['0', '1']);
+            $table->string('slug')->nullable();
+            $table->tinyInteger('is_town')->unsigned();
             $table->string('path');
-            $table->enum('is_show', ['0', '1']);
+            $table->tinyInteger('is_show')->unsigned();
         });
     }
 

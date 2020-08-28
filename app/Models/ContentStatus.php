@@ -10,7 +10,7 @@ namespace App\Models;
 
 
 
-Abstract Class Information extends Model
+Abstract Class ContentStatus extends Model
 {
     const UNREVIEWED = 0;
     const PASS = 1;
@@ -24,5 +24,9 @@ Abstract Class Information extends Model
         self::VIOLATION => '内容违反规定',
         self::EXPIRED => '已过期',
         self::DELETED => '已删除'
+    ];
+
+    protected $attributes = [
+        'status' => 0,
     ];
 }

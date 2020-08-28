@@ -30,16 +30,16 @@
                             <label for="email-field">性 别</label>
                             <div class="form-check">
                                 <label class="radio-inline">
-                                    <input type="radio" name="sex" id="sex-field1" value="1" />男
+                                    <input type="radio" name="sex" id="sex-field1" value="1" {{ old('sex', $user->sex) == 1?'checked':'' }}/>男
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="sex" id="sex-field2" value="2" />女
+                                    <input type="radio" name="sex" id="sex-field2" value="2" {{ old('sex', $user->sex) == 2?'checked':'' }}/>女
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="birth-field">出生年月</label>
-                            <input class="form-control" type="date" name="birth" id="birth-field" value="{{ old('birth', $user->birth) }}" />
+                            <input class="form-control" type="date" name="birth" id="birth-field" value="{{ date('Y-m-d', strtotime(old('birth', $user->birth))) }}" />
                         </div>
                         <div class="form-group">
                             <label for="introduction-field">个人简介</label>

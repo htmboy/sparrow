@@ -74,9 +74,9 @@ body {
   }
 }
 
-/* Topic Index Page */
-.topics-index-page, .categories-show-page {
-  .topic-list {
+/* message Index Page */
+.messages-index-page, .categories-show-page {
+  .message-list {
     .nav>li>a {
       position: relative;
       display: block;
@@ -119,11 +119,11 @@ body {
   max-width:100%;
 }
 
-/* Topic Show Page */
+/* message Show Page */
 
 @import "message_body";
 
-.topics-show-page {
+.messages-show-page {
 
   .card {
     padding: 15px;
@@ -133,5 +133,34 @@ body {
       font-size: 28px;
       line-height: 38px;
     }
+  }
+}
+
+/* 回复列表 */
+
+.message-reply {
+  a {
+    color: inherit;
+  }
+
+  .meta {
+    font-size: .9em;
+    color: #b3b3b3;
+  }
+}
+
+/* 消息通知 */
+.notification-badge {
+  .badge {
+    font-size: 12px;
+    margin-top: 14px;
+  }
+
+  .badge-secondary {
+    background-color: #EBE8E8;
+  }
+
+  .badge-hint {
+    background-color: #d15b47 !important;
   }
 }
