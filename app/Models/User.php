@@ -46,20 +46,20 @@ class User extends Authenticatable implements MustVerifyEmailContract
         'email_verified_at' => 'datetime'
     ];
 
-    const UNREVIEWED = 0;
-    const NORMAL = 1;
-    const VIOLATION = 2;
-    const SUSPICIOUS = 7;
-    const FREEZE = 8;
-    const DESTROY = 9;
+    const STATUS_UNREVIEWED = 0;
+    const STATUS_NORMAL = 1;
+    const STATUS_VIOLATION = 2;
+    const STATUS_SUSPICIOUS = 7;
+    const STATUS_FREEZE = 8;
+    const STATUS_DESTROY = 9;
 
     public static $statusMap = [
-        self::UNREVIEWED => '未审核',
-        self::NORMAL => '正常',
-        self::VIOLATION => '违规',
-        self::SUSPICIOUS => '异常',
-        self::FREEZE => '冻结',
-        self::DESTROY => '销户'
+        self::STATUS_UNREVIEWED => '未审核',
+        self::STATUS_NORMAL => '正常',
+        self::STATUS_VIOLATION => '违规',
+        self::STATUS_SUSPICIOUS => '异常',
+        self::STATUS_FREEZE => '冻结',
+        self::STATUS_DESTROY => '销户'
     ];
 
     public function messages()

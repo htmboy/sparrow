@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarouselsTable extends Migration
+class CreateVideoCarouselsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCarouselsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sparrow_carousels', function (Blueprint $table) {
+        Schema::create('sparrow_video_carousels', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('summary');
             $table->string('source');
-            $table->text('link');
+            $table->text('link')->nullable();
             $table->string('alt');
             $table->string('title');
             $table->timestamp('created_at');

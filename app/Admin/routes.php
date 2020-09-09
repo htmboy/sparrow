@@ -18,4 +18,13 @@ Route::group([
     $router->resource('messages', MessageController::class);
     $router->resource('replies', ReplyController::class);
 
+    $router->resource('i-p-libraries', IPLibraryController::class);
+
+    $router->resource('videos', VideoController::class);
+    $router->resource('video-carousels', VideoCarouselController::class);
+    $router->resource('video-countries', VideoCountryController::class);
+    $router->resource('video-discusses', VideoDiscussController::class);
+    $router->resource('video-posters', VideoPosterController::class);
+    $router->resource('video-sources', VideoSourceController::class);
+    $router->resource('video-types', VideoTypeController::class);
 });

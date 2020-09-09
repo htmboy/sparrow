@@ -13,9 +13,8 @@ class CreateVideoWithTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_with_type', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
-            $table->string('video_id');
+        Schema::create('sparrow_video_with_type', function (Blueprint $table) {
+            $table->bigInteger('video_id')->unsigned();
             $table->tinyInteger('type_id')->unsigned();
         });
     }
@@ -27,6 +26,6 @@ class CreateVideoWithTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_with_type');
+        Schema::dropIfExists('sparrow_video_with_type');
     }
 }

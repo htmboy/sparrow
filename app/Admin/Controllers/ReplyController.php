@@ -31,7 +31,7 @@ class ReplyController extends AdminController
         $grid->model()->orderByDesc('created_at');
         $grid->column('message')->title('标题')->link(function ($message){
 //            return $message->message->link();
-            return route('admin.messages.show', [$message->id]);
+            return route('admin.v2.messages.show', [$message->id]);
         });
         $grid->column('content', '内容')->display(function ($content){
             return $content;

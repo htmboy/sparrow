@@ -37,7 +37,7 @@ class MessageController extends AdminController
 
         $grid->column('user', __('User id'))->username('用户');
         $grid->column('title', __('Title'))->link(function ($message){
-            return route('admin.messages.show', [$message->id]);
+            return route('admin.v2.messages.show', [$message->id]);
         });
         $statusMap = Message::$statusMap;
         $grid->column('status', '状态')->editable('select', $statusMap)->filter($statusMap);

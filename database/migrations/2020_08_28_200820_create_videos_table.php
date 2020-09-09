@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
             $table->tinyInteger('country_id')->unsigned();
-            $table->string('starrring');
+            $table->string('starring');
             $table->string('director');
             $table->text('introduction');
             $table->timestamp('issued_at');

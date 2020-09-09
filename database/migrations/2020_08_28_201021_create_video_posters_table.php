@@ -19,7 +19,6 @@ class CreateVideoPostersTable extends Migration
             $table->string('title');
             $table->string('source');
             $table->string('alt');
-            $table->text('link');
             $table->tinyInteger('is_show');
             $table->integer('sort')->unsigned();
             $table->timestamps();

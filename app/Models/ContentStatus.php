@@ -12,18 +12,18 @@ namespace App\Models;
 
 Abstract Class ContentStatus extends Model
 {
-    const UNREVIEWED = 0;
-    const PASS = 1;
-    const VIOLATION = 2;
-    CONST EXPIRED = 3;
-    CONST DELETED = 4;
+    const STATUS_UNREVIEWED = 0;
+    const STATUS_PASS = 1;
+    const STATUS_VIOLATION = 2;
+    CONST STATUS_EXPIRED = 3;
+    CONST STATUS_DELETED = 4;
 
     public static $statusMap = [
-        self::UNREVIEWED => '未审核',
-        self::PASS => '通过审核',
-        self::VIOLATION => '内容违反规定',
-        self::EXPIRED => '已过期',
-        self::DELETED => '已删除'
+        self::STATUS_UNREVIEWED => '未审核',
+        self::STATUS_PASS => '通过审核',
+        self::STATUS_VIOLATION => '内容违反规定',
+        self::STATUS_EXPIRED => '已过期',
+        self::STATUS_DELETED => '已删除'
     ];
 
     protected $attributes = [
