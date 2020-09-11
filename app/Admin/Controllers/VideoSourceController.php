@@ -17,7 +17,7 @@ class VideoSourceController extends BaseController
      *
      * @var string
      */
-    protected $title = 'VideoSource';
+    protected $title = '片源';
 
     private $request;
 

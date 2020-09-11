@@ -15,7 +15,7 @@ class VideoDiscussController extends AdminController
      *
      * @var string
      */
-    protected $title = '电影评论';
+    protected $title = '影片评论';
 
     /**
      * Make a grid builder.
@@ -25,9 +25,15 @@ class VideoDiscussController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new VideoDiscuss());
+        $grid->disableFilter();
+        $grid->disableExport();
+        $grid->disableRowSelector();
 
+        $grid->actions(function ($actions) {
 
-
+            // 去掉查看
+            $actions->disableView();
+        });
         return $grid;
     }
 

@@ -2,7 +2,12 @@
     <div class="container">
         <!-- Branding Image -->
         <a class="navbar-brand " href="{{ url('/') }}">
-            {{getAppName()}} ~ 永
+            @if(session('place'))
+
+                {{getAppName() .'~'. idToSlugs(session('place_id'), false) . '站'}}
+            @else
+                {{getAppName()}}
+            @endif
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +28,7 @@
             <ul class="navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if(session('place_id'))
-                <li class="nav-item"><a class="nav-link" href="{{route('root')}}">{{idToProvinceSlugs(session('place_id'), false)}}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('region')}}">{{idToProvinceSlugs(session('place_id'), false)}}</a></li>
                 @endif
                 @guest
                     <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>

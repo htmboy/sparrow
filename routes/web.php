@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'RootController@index')->name('root');
+Route::get('region', 'RootController@region')->name('region');
 
 // 用户身份验证相关的路由
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -41,7 +42,7 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 
 Route::prefix('{position}')->group(function (){
     Route::get('', 'IndexController@index')->name('index');
-    Route::get('messages/{message}', 'MessagesController@show')->name('messages.show');
 
+    Route::get('messages/{message}', 'MessagesController@show')->name('messages.show');
     Route::resource('themes', 'ThemesController', ['only' => ['show']]);
 });

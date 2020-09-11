@@ -17,6 +17,7 @@ Route::group([
     $router->resource('themes', ThemeController::class);
     $router->resource('messages', MessageController::class);
     $router->resource('replies', ReplyController::class);
+    $router->resource('carousels', CarouselController::class);
 
     $router->resource('i-p-libraries', IPLibraryController::class);
 

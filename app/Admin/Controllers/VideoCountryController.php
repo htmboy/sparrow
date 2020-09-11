@@ -15,7 +15,7 @@ class VideoCountryController extends AdminController
      *
      * @var string
      */
-    protected $title = '电影国家';
+    protected $title = '影片国家';
 
     /**
      * Make a grid builder.
@@ -31,7 +31,11 @@ class VideoCountryController extends AdminController
         $grid->model()->orderByDesc('sort');
         $grid->column('name', '国家');
         $grid->column('sort', '排名')->editable();
+        $grid->actions(function ($actions) {
 
+            // 去掉查看
+            $actions->disableView();
+        });
         return $grid;
     }
 

@@ -18,7 +18,7 @@ class VideoPosterController extends AdminController
      *
      * @var string
      */
-    protected $title = 'VideoPoster';
+    protected $title = '影片海报';
 
     private $request;
 

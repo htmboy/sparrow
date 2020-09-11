@@ -13,6 +13,13 @@ class IndexController extends BaseController
 
     public function index($position)
     {
+
         return view('index.index');
     }
+
+    public function region()
+    {
+        return view('root.root');
+    }
+
 }

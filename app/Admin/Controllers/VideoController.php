@@ -29,7 +29,7 @@ class VideoController extends BaseController
      *
      * @var string
      */
-    protected $title = 'Video';
+    protected $title = '影片';
 
 
     private $request;

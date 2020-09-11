@@ -15,7 +15,7 @@ class VideoTypeController extends AdminController
      *
      * @var string
      */
-    protected $title = 'VideoType';
+    protected $title = '电影类型';
 
     /**
      * Make a grid builder.
@@ -34,6 +34,11 @@ class VideoTypeController extends AdminController
         $grid->column('name', '类型');
         $grid->column('sort', '排序')->editable();
 
+        $grid->actions(function ($actions) {
+
+            // 去掉查看
+            $actions->disableView();
+        });
         return $grid;
     }
 

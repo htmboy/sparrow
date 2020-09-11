@@ -2,20 +2,21 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\Carousel;
 use App\Models\VideoCarousel;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class VideoCarouselController extends AdminController
+class CarouselController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = '影片轮播图';
+    protected $title = '轮播图';
 
     protected $is_show = [
         'on' => ['value' => 1, 'text' => '显示'],
@@ -29,7 +30,7 @@ class VideoCarouselController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new VideoCarousel());
+        $grid = new Grid(new Carousel());
         $grid->disableFilter();
         $grid->disableExport();
         $grid->disableRowSelector();
@@ -63,7 +64,7 @@ class VideoCarouselController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(VideoCarousel::findOrFail($id));
+        $show = new Show(Carousel::findOrFail($id));
 
 
 
@@ -77,7 +78,7 @@ class VideoCarouselController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new VideoCarousel());
+        $form = new Form(new Carousel());
 
         $form->text('summary', '描述')->required();
         $form->text('title', '图片标题')->required();
@@ -87,7 +88,7 @@ class VideoCarouselController extends AdminController
             ->resize(1200, 300)->required();
         $form->switch('is_show', '是否显示')->states($this->is_show);
 
-        $form->number('sort', '排序')->min(0)->default(VideoCarousel::count() + 1)->required();
+        $form->number('sort', '排序')->min(0)->default(Carousel::count() + 1)->required();
 
         $form->hidden('created_at');
         $form->saving(function (Form $form){
